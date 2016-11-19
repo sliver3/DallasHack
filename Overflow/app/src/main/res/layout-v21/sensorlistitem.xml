@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_above="@+id/activity_feed"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -20,27 +21,21 @@
     <TextView
         android:id="@+id/tvSensorInfo"
         android:layout_toRightOf="@+id/ivStatusIcon"
-        android:text="THIS IS THE STATUS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        />
-
+        android:textSize="20sp" />
     <Button
         android:text="Info"
         android:focusable="false"
         android:layout_width="57dp"
         android:layout_height="40dp"
-        android:id="@+id/btnInvJoin"
+        android:id="@+id/btnInfo"
         style="@android:style/Widget.Material.Light.Button.Borderless"
         android:elevation="0dp"
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="15sp"
+        android:layout_below="@+id/tvSensorInfo"
         android:layout_alignStart="@+id/ivStatusIcon"
-        android:layout_centerInParent="true"
         android:layout_marginStart="121dp" />
-
-
-
 
 </RelativeLayout>

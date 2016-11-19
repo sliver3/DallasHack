@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -50,13 +52,21 @@ public class ListItemAdapter extends ArrayAdapter<Sensor> {
          * Buttons
          */
 
-
+        final Button btnInfo = (Button) view.findViewById(R.id.btnInfo);
         /*
          * setting the text
          */
 
         tvSensorInfo.setText(sensor.toString());
 
+
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("HEY");
+
+            }
+        });
         return view;
     }
     /*
