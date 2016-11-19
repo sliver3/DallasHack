@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -44,19 +43,25 @@ public class ListItemAdapter extends ArrayAdapter<Sensor> {
         View view = inflater.inflate(R.layout.sensorlistitem, null); // ***********************************
 
         /*
-         * TextViews
+         * TextView(s)
          */
         final TextView tvSensorInfo = (TextView) view.findViewById(R.id.tvSensorInfo);
 
         /*
-         * Buttons
+         * Button(s)
          */
 
         final Button btnInfo = (Button) view.findViewById(R.id.btnInfo);
+
+        /*
+         * Imageview(s)
+         */
+
+
+
         /*
          * setting the text
          */
-
         tvSensorInfo.setText(sensor.toString());
 
 

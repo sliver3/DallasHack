@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "86038794821",
+    "firebase_url": "https://overflow-c8681.firebaseio.com",
+    "project_id": "overflow-c8681",
+    "storage_bucket": "overflow-c8681.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:86038794821:android:7434c1807fe53b6a",
+        "android_client_info": {
+          "package_name": "com.ibm.mobilefirstplatform.clientsdk.android.push"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "86038794821-s7j8craotjqpk0ouob4jc05r3ld9hhce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1vi1zJitO6tqT467WCV8qhnl5zu46Smw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

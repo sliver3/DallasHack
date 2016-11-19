@@ -34,7 +34,7 @@ public class MainActivity extends ListActivity {
     public void showFeed () {
         sensorList.clear();
         fillSensorLists();
-        this.setListAdapter(new ListItemAdapter(this, 0, sensorList)); // 2nd way of setting adapter
+        this.setListAdapter(new ListItemAdapter(MainActivity, 0, sensorList)); // 2nd way of setting adapter
     }
     /*
      * end showFeed()
