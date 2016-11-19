@@ -57,41 +57,6 @@ public class ListItemAdapter extends ArrayAdapter<Sensor> {
 
         tvSensorInfo.setText(sensor.toString());
 
-//            tvInvitation.setText(sensor.toString());
-//
-//            btnJoin.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    String currentCount = (String)tvJoinCtr.getText();
-//                    Integer count = Integer.valueOf(currentCount);
-//                    if (count == 0)
-//                        count++;
-//                    else
-//                        count = 0;
-//
-//                    tvJoinCtr.setText(count.toString());
-//                    int invitationID = invitation.getInvitationID();
-//                }
-//
-//            });
-//
-//            btnMaybe.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    String currentCount = (String)tvMaybeCtr.getText();
-//                    Integer count = Integer.valueOf(currentCount);
-//
-//                    if (count == 0)
-//                        count++;
-//                    else
-//                        count = 0;
-//
-//                    tvMaybeCtr.setText(count.toString());
-//                    int invitationID = invitation.getInvitationID();
-//                }
-//
-//            });
-
         return view;
     }
     /*
