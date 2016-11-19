@@ -18,6 +18,26 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <intent-filter>
+        <action android:name="Your_Android_Package_Name.IBMPushNotification"/>
+        <category  android:name="android.intent.category.DEFAULT"/>
+    </intent-filter>
+
+    <service android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService"
+        android:exported="true" >
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+    <service
+        android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush"
+        android:exported="true" >
+        <intent-filter>
+            <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+        </intent-filter>
+    </service>
+
+
 
 
 
