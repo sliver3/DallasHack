@@ -21,11 +21,6 @@
         android:layout_alignParentStart="true"
         />
 
-    <intent-filter>
-        <action android:name="com.example.gabinoluna.overflow.IBMPushNotification"/>
-        <category  android:name="android.intent.category.DEFAULT"/>
-    </intent-filter>
-
 
 </RelativeLayout>
 

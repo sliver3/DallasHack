@@ -6,16 +6,49 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush;
+
 import java.util.ArrayList;
+
 public class MainActivity extends ListActivity {
 
     private static Activity MainActivity; // list activity to set adapter to
     private ArrayList<Sensor> sensorList; // list of type Invitation which holds last 20 invitations
+    private MFPPush push;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        BMSClient.getInstance().initialize(this, BMSClient.REGION_US_SOUTH);
+
+        //Initialize client Push SDK for Java
+//        MFPPush push = MFPPush.getInstance();
+//        push.initialize(getApplicationContext(), "overflow-c8681", "clientSecret");
+//
+//
+//
+//        //Register Android devices
+//        push.registerDevice(new MFPPushResponseListener<String>() {
+//            @Override
+//            public void onSuccess(String deviceId) {
+//                //handle success here
+//            }
+//
+//            @Override
+//            public void onFailure(MFPPushException ex) {
+//                //handle failure here
+//            }
+//        });
+//
+//        //Handles the notification when it arrives
+//        MFPPushNotificationListener notificationListener = new MFPPushNotificationListener() {
+//            @Override
+//            public void onReceive(final MFPSimplePushNotification message) {
+//            // Handle Push Notification
+//            }
+//        };
+
 
         MainActivity = this;
         sensorList = new ArrayList<>();
@@ -27,11 +60,13 @@ public class MainActivity extends ListActivity {
     }
 
 
+
+
     /*
      * showFeed()
      * this function will fill the sensor list and display the list
      */
-    public void showFeed () {
+    public void showFeed() {
         sensorList.clear();
         fillSensorLists();
         this.setListAdapter(new ListItemAdapter(MainActivity, 0, sensorList)); // 2nd way of setting adapter
