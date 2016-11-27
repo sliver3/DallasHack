@@ -6,25 +6,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush;
-
 import java.util.ArrayList;
 
 public class MainActivity extends ListActivity {
 
     private static Activity MainActivity; // list activity to set adapter to
     private ArrayList<Sensor> sensorList; // list of type Invitation which holds last 20 invitations
-    private MFPPush push;
+//    private MFPPush push;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        BMSClient.getInstance().initialize(this, BMSClient.REGION_US_SOUTH);
-
-        //Initialize client Push SDK for Java
+//
+//        //Initialize client Push SDK for Java
 //        MFPPush push = MFPPush.getInstance();
-//        push.initialize(getApplicationContext(), "overflow-c8681", "clientSecret");
+//        push.initialize(getApplicationContext(), "6782580a-addd-4914-8eb3-8cbce1083c41", "b8b768e5-fe15-4159-9c3b-0250642aa622");
 //
 //
 //
@@ -40,14 +38,8 @@ public class MainActivity extends ListActivity {
 //                //handle failure here
 //            }
 //        });
-//
-//        //Handles the notification when it arrives
-//        MFPPushNotificationListener notificationListener = new MFPPushNotificationListener() {
-//            @Override
-//            public void onReceive(final MFPSimplePushNotification message) {
-//            // Handle Push Notification
-//            }
-//        };
+
+
 
 
         MainActivity = this;
@@ -59,8 +51,29 @@ public class MainActivity extends ListActivity {
 
     }
 
-
-
+//
+//    @Override
+//    protected void onResume(){
+//        super.onResume();
+//
+//        //Handles the notification when it arrives
+//        MFPPushNotificationListener notificationListener = new MFPPushNotificationListener() {
+//            @Override
+//            public void onReceive(final MFPSimplePushNotification message) {
+//                // Handle Push Notification
+//            }
+//        };
+//        if(push != null) {
+//            push.listen(notificationListener);
+//        }
+//    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        if (push != null) {
+//            push.hold();
+//        }
+//    }
 
     /*
      * showFeed()

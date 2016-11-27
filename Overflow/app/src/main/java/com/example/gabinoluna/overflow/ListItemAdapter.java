@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -57,12 +58,14 @@ public class ListItemAdapter extends ArrayAdapter<Sensor> {
          * Imageview(s)
          */
 
-
+        final ImageView ivStatus = (ImageView) view.findViewById(R.id.ivStatusIcon);
 
         /*
          * setting the text
          */
         tvSensorInfo.setText(sensor.toString());
+//        String picID = sensor.getPicName() + ".png";
+//        ivStatus.setImageResource(R.id.);
 
 
         btnInfo.setOnClickListener(new View.OnClickListener() {

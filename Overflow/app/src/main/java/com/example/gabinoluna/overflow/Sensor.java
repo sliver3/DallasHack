@@ -9,12 +9,19 @@ public class Sensor {
     private int id;
     private boolean on;
     private String location;
+    private String picName;
 
     public Sensor(int id) {
         this.status = "Sensor is on and clear";
         this.on = true;
         this.id = id;
         this.location = "location " + id;
+        if (id == 3) {
+            picName = "status_bad";
+        }
+        else {
+            picName = "status_good";
+        }
     }
 
     public Sensor(String status, int id, boolean on, String location) {
@@ -22,6 +29,14 @@ public class Sensor {
         this.id = id;
         this.on = on;
         this.location = location;
+    }
+
+    public String getPicName() {
+        return picName;
+    }
+
+    public void setPicName(String picName) {
+        this.picName = picName;
     }
 
     public String getStatus() {

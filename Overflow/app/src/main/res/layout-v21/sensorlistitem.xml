@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp" />
     <Button
-        android:text="Info"
+        android:text=" "
         android:focusable="false"
         android:layout_width="57dp"
         android:layout_height="40dp"
