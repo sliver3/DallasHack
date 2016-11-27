@@ -3,6 +3,7 @@ package com.example.gabinoluna.overflow;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,10 +56,18 @@ public class ListItemAdapter extends ArrayAdapter<Sensor> {
         final Button btnInfo = (Button) view.findViewById(R.id.btnInfo);
 
         /*
-         * Imageview(s)
+         * Imageview(s) and drawable(s)
          */
 
         final ImageView ivStatus = (ImageView) view.findViewById(R.id.ivStatusIcon);
+        final Drawable myDrawable;
+        if (sensor.isOn())
+            myDrawable = context.getResources().getDrawable(R.drawable.status_bad);
+        else
+            myDrawable = context.getResources().getDrawable(R.drawable.status_good);
+        ivStatus.setImageDrawable(myDrawable);
+
+
 
         /*
          * setting the text

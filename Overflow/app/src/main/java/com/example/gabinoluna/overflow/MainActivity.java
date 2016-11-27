@@ -2,78 +2,65 @@ package com.example.gabinoluna.overflow;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends ListActivity implements AsyncResponse {
 
     private static Activity MainActivity; // list activity to set adapter to
     private ArrayList<Sensor> sensorList; // list of type Invitation which holds last 20 invitations
-//    private MFPPush push;
+    private Button btnReset; // button to reset sensors
+    private Button btnRefresh; // button to reset sensors
+    private String request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        BMSClient.getInstance().initialize(this, BMSClient.REGION_US_SOUTH);
-//
-//        //Initialize client Push SDK for Java
-//        MFPPush push = MFPPush.getInstance();
-//        push.initialize(getApplicationContext(), "6782580a-addd-4914-8eb3-8cbce1083c41", "b8b768e5-fe15-4159-9c3b-0250642aa622");
-//
-//
-//
-//        //Register Android devices
-//        push.registerDevice(new MFPPushResponseListener<String>() {
-//            @Override
-//            public void onSuccess(String deviceId) {
-//                //handle success here
-//            }
-//
-//            @Override
-//            public void onFailure(MFPPushException ex) {
-//                //handle failure here
-//            }
-//        });
-
-
-
 
         MainActivity = this;
         sensorList = new ArrayList<>();
+        btnReset = (Button) findViewById(R.id.btnReset);
+        btnRefresh = (Button) findViewById(R.id.btnRefresh);
+        request = "";
+
 
         showFeed(); // show the feed jaherd
         setListListener();
 
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for (int i = 0; i < sensorList.size(); i++) {
+                    HashMap postData = new HashMap(); // hashmap of the post data to be sent
+                    request = "reset";
+
+                    // object to execute task
+                    PostResponseAsyncTask loginTask = new PostResponseAsyncTask(MainActivity.this, postData);
+                    String getURL = "http://52.38.151.153/overflow/trigger.php?sensorID=" + sensorList.get(i).getIdString() + "&position=0";
+                    System.out.println(getURL);
+                    loginTask.execute(getURL);
+                }
+            }
+        });
+
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
-
-//
-//    @Override
-//    protected void onResume(){
-//        super.onResume();
-//
-//        //Handles the notification when it arrives
-//        MFPPushNotificationListener notificationListener = new MFPPushNotificationListener() {
-//            @Override
-//            public void onReceive(final MFPSimplePushNotification message) {
-//                // Handle Push Notification
-//            }
-//        };
-//        if(push != null) {
-//            push.listen(notificationListener);
-//        }
-//    }
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        if (push != null) {
-//            push.hold();
-//        }
-//    }
 
     /*
      * showFeed()
@@ -93,12 +80,11 @@ public class MainActivity extends ListActivity {
      * The following function will be used to fill the sensorList for testing purposes.
      */
     public void fillSensorLists() {
-        for (Integer i = 1; i <= 20; i++) {
-            int id = i;
-
-            Sensor temp = new Sensor(id);
-            sensorList.add(temp);
-        }
+        HashMap postData = new HashMap(); // hashmap of the post data to be sent
+        request = "info";
+        // object to execute task
+        PostResponseAsyncTask loginTask = new PostResponseAsyncTask(MainActivity.this, postData);
+        loginTask.execute("http://52.38.151.153/overflow/sensors.php?request=info");
     }
     /*
      * end of fillSensorLists()
@@ -121,4 +107,46 @@ public class MainActivity extends ListActivity {
     /*
      * end of setListListener()
      */
+
+    /*
+    * start method processFinish() which is called upon the completion of the async task
+    */
+    @Override
+    public void processFinish(String output) {
+        // if refreshing the feed
+        if (request.equals("info")) {
+            parseSensors(output);
+        } else if (request.equals("reset")) {
+
+        }
+
+    }
+    /*
+     * end method processFinish()
+     */
+
+    /*
+     * start parseSensors(String outputPOST)
+     * which will return an arrayList of the current invitations
+     */
+    private void parseSensors(String outputPOST) {
+        String[] invitationsInfo = outputPOST.split(",");
+        for (int i = 0; i < invitationsInfo.length ; i++) {
+            String[] temp = invitationsInfo[i].split(" ");
+            int sensorID = Integer.valueOf(temp[0]);
+            boolean position;
+            if (temp[1].equals("1")) {
+                position = true;
+            } else {
+                position = false;
+            }
+            String location = temp[2];
+
+            Sensor tempSensor = new Sensor(sensorID, position, location);
+            sensorList.add(tempSensor);
+        }
+
+        System.out.println(sensorList.size());
+
+    }
 }

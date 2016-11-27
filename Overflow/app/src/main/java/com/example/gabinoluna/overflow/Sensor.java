@@ -16,12 +16,27 @@ public class Sensor {
         this.on = true;
         this.id = id;
         this.location = "location " + id;
+        if (on) {
+            picName = "status_good";
+        }
+        else {
+            picName = "status_bad";
+        }
+    }
+
+    public Sensor(int id, boolean on, String location) {
+        this.id = id;
+        this.on = on;
+        this.location = location;
+        this.status = "Sensor is on and clear";
         if (id == 3) {
             picName = "status_bad";
         }
         else {
             picName = "status_good";
         }
+
+
     }
 
     public Sensor(String status, int id, boolean on, String location) {
@@ -49,6 +64,10 @@ public class Sensor {
 
     public int getId() {
         return id;
+    }
+
+    public String getIdString() {
+        return String.valueOf(id);
     }
 
     public void setId(int id) {

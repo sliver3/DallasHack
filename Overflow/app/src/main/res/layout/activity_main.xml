@@ -11,7 +11,7 @@
     tools:context="com.example.gabinoluna.overflow.MainActivity">
 
 
-    
+
 
     <ListView
         android:id="@+id/android:list"
@@ -19,7 +19,24 @@
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        />
+        android:layout_below="@+id/btnReset" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESET"
+        android:id="@+id/btnReset"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REFRESH"
+        android:id="@+id/btnRefresh"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/btnReset"
+        android:layout_toStartOf="@+id/btnReset" />
 
 
 </RelativeLayout>
